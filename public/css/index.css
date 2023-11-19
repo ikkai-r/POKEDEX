@@ -71,37 +71,42 @@ body {
   }
 
   .bug {
-    background-color: #AB549A;
-    color: #5f2f55;
+    background-color: #ABBC1C;
+    color: #575f0c;
   }
 
   .rock {
-    background-color: #AB549A;
-    color: #5f2f55;
+    background-color: #BCAC66;
+    color: #4b4428;
+  }
+
+  .ground {
+    background-color: #DEBC54;
+    color: #382f15;
   }
 
   .ghost {
-    background-color: #AB549A;
-    color: #5f2f55;
+    background-color: #6666BC;
+    color: #2f2f57;
   }
 
   .dragon {
-    background-color: #AB549A;
-    color: #5f2f55;
+    background-color: #7866EF;
+    color: #231e42;
   }
 
   .dark {
-    background-color: #AB549A;
-    color: #5f2f55;
+    background-color: #785442;
+    color: #1a110d;
   }
 
   .steel {
-    background-color: #AB549A;
-    color: #5f2f55;
+    background-color: #ABACBC;
+    color: #35353a;
   }
 
   .fairy {
-    background-color: #AB549A;
-    color: #5f2f55;
+    background-color: #FFACFF;
+    color: #5a265a;
   }
 
