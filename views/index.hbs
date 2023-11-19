@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image" href="/img/favicon.png">
+  <link href="/css/style.css" rel="stylesheet">
+  <link href="/css/index.css" rel="stylesheet">
+  <title>pokedex</title>
+</head>
+<body class="bg-100-slate">
+
+    <div class="container mx-auto mt-20 grid grid-cols-3 gap-10">
+        
+        <!-- Left Container -->
+        <div  class="container col-span-2">
+
+            <!-- Search Bar -->
+            <div>
+              <form class="flex items-center">   
+                <label for="simple-search" class="sr-only">Search</label>
+                <div class="relative w-full">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="fill-red-500" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path fill-rule="evenodd" clip-rule="evenodd" d="M3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12ZM5.07089 13C5.55612 16.3923 8.47353 19 12 19C15.5265 19 18.4439 16.3923 18.9291 13H14.8293C14.4174 14.1652 13.3062 15 12 15C10.6938 15 9.58251 14.1652 9.17068 13H5.07089ZM18.9291 11C18.4439 7.60771 15.5265 5 12 5C8.47353 5 5.55612 7.60771 5.07089 11H9.17068C9.58251 9.83481 10.6938 9 12 9C13.3062 9 14.4174 9.83481 14.8293 11H18.9291ZM12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z"
+                            />
+                        </svg>
+                    </div>
+                    <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search your pokemon!" required>
+                </div>
+                <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-red-500 rounded-lg border border-red-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                    <span class="sr-only">Search</span>
+                </button>
+            </form>
+            </div>
+            <!-- Search Bar End -->
+            
+
+            <!-- Pokemon Cards -->
+            <div class="container mt-10 grid grid-cols-4 gap-8" id="pokemon-card-container">
+
+                {{#each pokemonData}}
+                    <div class="flex justify-center	items-center flex-col block max-w-xs max-h-xs p-6 mt-8 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    <img src="{{this.sprites.versions.generation-v.black-white.front_default}}" class="w-24 pokemon-icon-idle">
+                    <div class="flex justify-center	items-center flex-col mt-1">
+                    <p class="text-xs text-gray-500 dark:text-gray-400">N°{{this.id}}</p>
+                    <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title">{{this.name}}</h5>  
+                    <div>
+                        {{#each this.types}}
+                            <span class="{{this.type.name}} text-xs font-medium me-2 px-2.5 py-0.5 rounded">{{this.type.name}}</span>
+                        {{/each}}
+                    </div>  
+                    </div>
+                    </div>
+                {{/each}}
+
+            </div>
+            <!-- Pokemon Cards End -->
+
+        </div>
+        <!-- Left Container End -->
+
+        <!-- Right Container -->
+
+        <div class="container col-span-1">
+            <h1><b>POKEMON</b></h1>
+        </div>
+
+        <!-- Right Container End-->
+    </div>
+    <script src="/js/index.js"></script>
+</body>
+</html>
