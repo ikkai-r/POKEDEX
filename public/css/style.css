@@ -1357,6 +1357,10 @@ input:checked + .toggle-bg {
   height: 1.75rem;
 }
 
+.h-1\/2 {
+  height: 50%;
+}
+
 .max-h-14 {
   max-height: 3.5rem;
 }
@@ -1383,6 +1387,18 @@ input:checked + .toggle-bg {
 
 .max-h-32 {
   max-height: 8rem;
+}
+
+.max-h-20 {
+  max-height: 5rem;
+}
+
+.max-h-2 {
+  max-height: 0.5rem;
+}
+
+.max-h-48 {
+  max-height: 12rem;
 }
 
 .min-h-full {

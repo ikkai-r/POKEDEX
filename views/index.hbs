@@ -43,7 +43,7 @@
             <div class="container mt-10 grid grid-cols-4 gap-8" id="pokemon-card-container">
 
                 {{#each pokemonData}}
-                    <div class="card-cont flex justify-center items-center flex-col block max-w-xs max-h-40 p-6 mt-8 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 hover:border-zinc-400 hover:border-2	">
+                    <div class="card-cont flex justify-center items-center flex-col block max-w-xs max-h-40 p-6 mt-8 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 hover:border-zinc-400 hover:border-2" onclick="getPokemonData(this)">
                     <div class="pokemon-img-cont container flex justify-center w-32 h-32">
                         <img src="{{this.sprites.versions.generation-v.black-white.front_default}}" class="pokemon-icon-idle">
                     </div>
@@ -73,11 +73,15 @@
                 
                 <!-- Picture Animated -->
 
-                <div class="pokemon-cont-img-anim"> 
-                    <img src="img/no-pokemon-selected-image.png" id="pokemon-anim-select">
+                <div class="pokemon-cont-img-anim max-h-2"> 
+                    <img src="img/no-pokemon-selected-image.png" id="pokemon-anim-select" class="max-h-48">
+                </div>
+
+                <div class="h-1/2 flex justify-content items-center text-center prompt">
+                    <h5 class="mb-1 text-2xl text-gray-900 pokemon-title">select a pokemon to display here!</h5>  
                 </div>
                 
-                <!-- Pokemon Description -->
+                {{!-- <!-- Pokemon Description -->
                 <div class="flex justify-center	items-center flex-col pokemon-desc mt-5">
                     <p class="text-xs text-gray-500 dark:text-gray-400">N° 1</p>
                     <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title">bulbasaur</h5>  
@@ -145,7 +149,7 @@
                 <div class="poke-evo text-center mt-10">
                     <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title">evolution</h5>  
                     
-                </div>
+                </div> --}}
                 
             </div>
 

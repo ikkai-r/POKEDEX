@@ -39,9 +39,54 @@ async function fetchMoreData() {
     }
 }
 
+async function fetchPokemon(id) {
+      try {
+          const response = await fetch('https://pokeapi.co/api/v2/pokemon/' + id);
+          const pokemon = await response.json();
+        
+          //updating image
+
+          const img = document.getElementById('pokemon-anim-select');
+          const newImg = new Image();
+
+          newImg.onload = function() {
+            img.src = this.src;
+            img.style.height = this.height * 4 + 'px';
+          };
+
+          //only 649 less ids have gifs
+          if (id < 650) {
+            newImg.src = pokemon.sprites.versions['generation-v']['black-white']['animated'].front_default;
+          } else {
+            newImg.src = pokemon.sprites.versions['generation-v']['black-white'].front_default;
+          }
+
+          //remove prompt
+          const pokePrompt = document.querySelector('.prompt');
+          pokePrompt.classList.add('hidden');
+
+          //updating the pokemon description
+          
+
+      } catch (error) {
+          console.error('Error fetching pokemon data:', error);
+      } 
+  }
+
 // Event listener for scroll
 window.addEventListener('scroll', async () => {
   if (!isLoading && window.scrollY + 100 >= document.documentElement.scrollHeight - document.documentElement.clientHeight) {
     await fetchMoreData();
   }
 });
+
+//Function to get specific pokemon data
+async function getPokemonData(element) {
+
+    const pElement = element.querySelector('p');
+    const parts = pElement.textContent.trim().split(' ');
+    const id = parseInt(parts[1]);
+
+    await fetchPokemon(id);
+    
+}
