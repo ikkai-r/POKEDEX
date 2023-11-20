@@ -43,6 +43,12 @@ async function fetchPokemon(id) {
       try {
           const response = await fetch('https://pokeapi.co/api/v2/pokemon/' + id);
           const pokemon = await response.json();
+
+          const resp = await fetch('https://pokeapi.co/api/v2/pokemon-species/' + id);
+          const pokedexE = await resp.json();
+
+          const res = await fetch('https://pokeapi.co/api/v2/type/' + id);
+          const pokeTyp = await res.json();
         
           //updating image
 
@@ -66,7 +72,124 @@ async function fetchPokemon(id) {
           pokePrompt.classList.add('hidden');
 
           //updating the pokemon description
+          const pokemonDesc = document.querySelector('.pokemon-selected-desc');
+          pokemonDesc.classList.remove('hidden');
+
+          const pokemonId = document.getElementById('n-id');
+          const pokeName = document.getElementById('selected-pokemon-title');
+          const pokeTypes = document.getElementById('selected-pokemon-types');
+          pokemonId.textContent = 'N° ' + id;
+          pokeName.textContent = pokemon.name;
+
+          let htmlTypes = ``;
+        
+          pokemon.types.forEach(element => {
+            htmlTypes += `<span class="${element.type.name} text-xs font-medium me-2 px-2.5 py-0.5 rounded">${element.type.name}</span>
+            `;
+          });
+
+          pokeTypes.innerHTML = htmlTypes;
+
+          //updating pokedex entry
+          const pokedex = document.getElementById('pokedex-entry');
+          pokedex.classList.remove('hidden');
+
+          const pokedexEnt = document.querySelector('#pokedex-entry p');
+          const text = pokedexE.flavor_text_entries[1].flavor_text;
+
+          //formatting pokedex
+          const replacedText = text.replace(/\/g, ' '); 
+          let newText = replacedText.toLowerCase(); 
+
+          newText = newText.replace(/(^\w|\.\s*\w)/g, function(sentence) {
+              return sentence.toUpperCase();
+          });
+
+          pokedexEnt.textContent = newText;
+
+          //updating height and weight
+          const pokeHW = document.getElementById('poke-hw');
+          pokeHW.classList.remove('hidden');
+          const heightTxt = document.querySelector('#poke-hw #height div p');
+          heightTxt.textContent = pokemon.height/10 + 'm';
+          const weightTxt = document.querySelector('#poke-hw #weight div p');
+          weightTxt.textContent = pokemon.weight + 'kg';
+         
+          //updating abilities
+          const pokeAbilities = document.getElementById('poke-abilities');
+          pokeAbilities.classList.remove('hidden');
           
+          let pokeHtml = ` <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title col-span-2">abilities</h5>
+          `;
+
+          if(pokemon.abilities.length == 1) {
+            const formattedAbilityName = pokemon.abilities[0].ability.name.replace(/-/g, ' ').replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+            pokeHtml = `<div class="w-full col-span-2">
+              <div class="container w-full bg-gray-100 rounded h-7 flex justify-center items-center">
+                  <p class="text-gray-800 text-sm font-medium">${formattedAbilityName}</p>
+              </div> 
+          </div>`;
+          } else if (pokemon.abilities.length >= 2) {
+            
+            for (let i = 0; i < 2; i++) {
+              const element = pokemon.abilities[i];
+              const formattedAbilityName = element.ability.name.replace(/-/g, ' ').replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+              pokeHtml += `<div class="w-full col-span-1">
+                <div class="container w-full bg-gray-100 rounded h-7 flex justify-center items-center">
+                    <p class="text-gray-800 text-sm font-medium">${formattedAbilityName}</p>
+                </div> 
+              </div>`;;
+          }
+
+          } else {
+            pokeHtml = `<div class="w-full col-span-2">
+              <div class="container w-full bg-gray-100 rounded h-7 flex justify-center items-center">
+                  <p class="text-gray-800 text-sm font-medium">None</p>
+              </div> 
+          </div>`;
+          }
+
+          pokeAbilities.innerHTML=pokeHtml;
+
+          //updating weak against
+          const weakAgainst = document.getElementById('weak-against');
+          const weakDiv = document.getElementById('weak-ab');
+          weakDiv.classList.remove('hidden');
+          
+          let weakHtml = ``;
+
+          pokeTyp.damage_relations['double_damage_from'].forEach(element => {
+            weakHtml += `<span class="${element.name} text-xs font-medium me-2 px-2.5 py-0.5 rounded">${element.name}</span>
+            `;
+          });
+
+          if(weakHtml == ``) {
+            `<span class="normal text-xs font-medium me-2 px-2.5 py-0.5 rounded">none</span>`
+          }
+
+          weakAgainst.innerHTML = weakHtml;
+
+          //updating strong against
+          const strongAgainst = document.getElementById('strong-against');
+          const strongDiv = document.getElementById('strong-ab');
+          strongDiv.classList.remove('hidden');
+          
+          let strongHtml = ``;
+
+          console.log(pokeTyp.damage_relations['double_damage_to']);
+
+          pokeTyp.damage_relations['double_damage_to'].forEach(element => {
+            strongHtml += `<span class="${element.name} text-xs font-medium me-2 px-2.5 py-0.5 rounded">${element.name}</span>
+            `;
+          });
+
+          if(strongHtml == ``) {
+            strongHtml = `<span class="normal text-xs font-medium me-2 px-2.5 py-0.5 rounded">none</span>`
+          }
+
+          strongAgainst.innerHTML = strongHtml;
+
+
 
       } catch (error) {
           console.error('Error fetching pokemon data:', error);

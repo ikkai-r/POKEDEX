@@ -73,7 +73,7 @@
                 
                 <!-- Picture Animated -->
 
-                <div class="pokemon-cont-img-anim max-h-2"> 
+                <div class="pokemon-cont-img-anim max-h-2 mb-2"> 
                     <img src="img/no-pokemon-selected-image.png" id="pokemon-anim-select" class="max-h-48">
                 </div>
 
@@ -81,10 +81,10 @@
                     <h5 class="mb-1 text-2xl text-gray-900 pokemon-title">select a pokemon to display here!</h5>  
                 </div>
                 
-                {{!-- <!-- Pokemon Description -->
-                <div class="flex justify-center	items-center flex-col pokemon-desc mt-5">
-                    <p class="text-xs text-gray-500 dark:text-gray-400">N° 1</p>
-                    <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title">bulbasaur</h5>  
+                <!-- Pokemon Description -->
+                <div class="flex justify-center	items-center flex-col pokemon-selected-desc mt-6 hidden">
+                    <p class="text-xs text-gray-500 dark:text-gray-400" id="n-id"></p>
+                    <h5 class="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title" id="selected-pokemon-title"></h5>  
                     <div id="selected-pokemon-types">
                             <span class="poison text-sm font-medium me-2 px-2.5 py-0.5 rounded">poison</span>
                             <span class="grass text-sm font-medium me-2 px-2.5 py-0.5 rounded">grass</span>
@@ -92,64 +92,51 @@
                 </div>
 
                 <!-- Pokedex Entry -->
-                <div class="pokedex-entry text-center mt-5">
+                <div id="pokedex-entry" class="text-center mt-5 hidden">
                     <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title">pokedex entry</h5>  
-                    <p class="text-sm font-normal text-gray-500">A strange seed was planted on its back at birth. the plant sprouts and grows with this pokémon.</p>
+                    <p class="text-sm font-normal text-gray-500"></p>
                 </div>
 
                 <!-- H-W -->
-                <div class="poke-hw grid grid-cols-2 gap-2 text-center mt-5 w-full">
-                    <div class="w-full">
+                <div id="poke-hw" class="grid grid-cols-2 gap-2 text-center mt-5 hidden w-full">
+                    <div id="height" class="w-full">
                         <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title">height</h5>
-                        <div class="container w-full bg-blue-100 rounded h-7 flex justify-center items-center">
-                                <p class="text-blue-800 text-sm font-medium">0.7m</p>
+                        <div class="container w-full bg-gray-100 rounded h-7 flex justify-center items-center">
+                                <p class="text-gray-800 text-sm font-medium">0.7m</p>
                         </div> 
                     </div>
-                    <div class="w-full">
+                    <div id="weight" class="w-full">
                         <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title">weight</h5>
-                        <div class="container w-full bg-blue-100 rounded h-7 flex justify-center items-center">
-                                <p class="text-blue-800 text-sm font-medium">6.9kg</p>
+                        <div class="container w-full bg-gray-100 rounded h-7 flex justify-center items-center">
+                                <p class="text-gray-800 text-sm font-medium">6.9kg</p>
                         </div> 
                     </div>
                 </div>
 
                 <!-- Abilities -->
-                <div class="poke-abilities grid grid-cols-2 gap-2 text-center mt-5 w-full ">
-                    <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title col-span-2">abilities</h5>
-                    <div class="w-full col-span-1">
-                        <div class="container w-full bg-blue-100 rounded h-7 flex justify-center items-center">
-                                <p class="text-blue-800 text-sm font-medium">overgrow</p>
-                        </div> 
-                    </div>
-                    <div class="w-full col-span-1">
-                        <div class="container w-full bg-blue-100 rounded h-7 flex justify-center items-center">
-                                <p class="text-blue-800 text-sm font-medium">chlorophyll</p>
-                        </div> 
-                    </div>
+                <div id="poke-abilities" class="grid grid-cols-2 gap-2 text-center mt-5 hidden w-full ">
                 </div>
 
                 <!-- Weak Against -->
-                <div class="pokedex-entry text-center mt-6">
+                <div id="weak-ab" class="text-center mt-6 hidden">
                     <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title">weak against</h5>  
-                     <div id="selected-pokemon-types">
-                            <span class="poison text-sm font-medium me-2 px-2.5 py-0.5 rounded">poison</span>
-                            <span class="grass text-sm font-medium me-2 px-2.5 py-0.5 rounded">grass</span>
+                     <div id="weak-against">
                     </div>  
                 </div>
 
                 <!-- Strong Against -->
-                <div class="pokedex-entry text-center mt-6">
+                <div id="strong-ab" class="text-center mt-6 hidden">
                     <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title">strong against</h5>  
-                    <div id="selected-pokemon-types">
-                            <span class="poison text-sm font-medium me-2 px-2.5 py-0.5 rounded">poison</span>
-                            <span class="grass text-sm font-medium me-2 px-2.5 py-0.5 rounded">grass</span>
-                    </div>                  </div>
+                    <div id="strong-against">
+                           
+                    </div>                  
+                    </div>
 
                 <!-- Evolution -->
-                <div class="poke-evo text-center mt-10">
+                <div class="poke-evo text-center mt-10 hidden">
                     <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title">evolution</h5>  
                     
-                </div> --}}
+                </div>
                 
             </div>
 

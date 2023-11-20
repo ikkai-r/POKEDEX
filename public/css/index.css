@@ -22,7 +22,7 @@ body {
   }
 
   #pokemon-anim-select {
-    margin-top: -9rem;
+    margin-top: -10rem;
     object-fit: contain;
     image-rendering: pixelated;
   }
