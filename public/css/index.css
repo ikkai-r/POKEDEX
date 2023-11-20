@@ -18,6 +18,13 @@ body {
 
   .pokemon-icon-idle {
     margin-top: -4.5rem;
+    image-rendering: pixelated;
+  }
+
+  #pokemon-anim-select {
+    margin-top: -9.5rem;
+    object-fit: contain;
+    image-rendering: pixelated;
   }
 
   .card-cont {
