@@ -176,8 +176,6 @@ async function fetchPokemon(id) {
           
           let strongHtml = ``;
 
-          console.log(pokeTyp.damage_relations['double_damage_to']);
-
           pokeTyp.damage_relations['double_damage_to'].forEach(element => {
             strongHtml += `<span class="${element.name} text-xs font-medium me-2 px-2.5 py-0.5 rounded">${element.name}</span>
             `;
@@ -188,6 +186,50 @@ async function fetchPokemon(id) {
           }
 
           strongAgainst.innerHTML = strongHtml;
+
+          //updating evolution
+          const ev = await fetch(pokedexE.evolution_chain.url);
+          const pokeEvo = await ev.json();
+
+          const pokeEv = document.getElementById('poke-evo');
+          pokeEv.classList.remove('hidden');
+
+          const evolu = document.getElementById('evolution');
+
+          let chain = pokeEvo.chain;
+
+          let evoHTML = ``;
+
+          while (chain.evolves_to[0] !== null || chain.evolves_to[0] !== undefined) {
+
+            console.log(chain.species.name);
+
+            const parts = chain.species.url.split('/');
+            const pID = parts[parts.length - 2];
+
+            const image_id = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/' + pID + '.png';
+
+            if(chain.evolves_to[0] != null || chain.evolves_to[0] != undefined) {
+              const level = chain.evolves_to[0].evolution_details[0].min_level;
+
+              evoHTML+= `<div class="container bg-gray-100 rounded me-3">
+              <img class="w-20" src="${image_id}">
+            </div>
+            <div class="container bg-gray-100 rounded me-3">
+               <h5 class="mb-1 text-xs tracking-tight text-gray-900 dark:text-white">Lv. ${level}</h5>
+             </div>
+            `
+              chain = chain.evolves_to[0];
+            } else {
+              evoHTML+= `<div class="container bg-gray-100 rounded">
+                <img class="w-20" src="${image_id}">
+              </div>`
+              break;
+            }
+          }
+
+          evolu.innerHTML = evoHTML;
+
 
 
 
