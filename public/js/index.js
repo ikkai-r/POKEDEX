@@ -16,9 +16,11 @@ async function fetchMoreData() {
             `;
         });
         pokemonCardCont.innerHTML += `
-            <div class="card-cont flex justify-center	items-center flex-col block max-w-xs max-h-xs p-6 mt-8 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <img src="${pokemon.sprites.versions['generation-v']['black-white'].front_default}" class="w-24 pokemon-icon-idle">
-                        <div class="flex justify-center	items-center flex-col mt-1">
+            <div class="card-cont flex justify-center items-center flex-col block max-w-xs max-h-40 p-6 mt-8 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 hover:border-zinc-400 hover:border-2">
+                <div class="pokemon-img-cont container flex justify-center w-24 h-24">
+                        <img src="${pokemon.sprites.versions['generation-v']['black-white'].front_default}" class="pokemon-icon-idle">
+                </div>
+                        <div class="flex justify-center	items-center flex-col -pt-2">
                         <p class="text-xs text-gray-500 dark:text-gray-400">N° ${pokemon.id}</p>
                         <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white pokemon-title">${pokemon.name}</h5>  
                         <div>
@@ -43,23 +45,3 @@ window.addEventListener('scroll', async () => {
     await fetchMoreData();
   }
 });
-
-function changeIcon(element, mouseOver){
-    const imgElement = element.querySelector('img');
-    const pElement = element.querySelector('p');
-    const parts = pElement.textContent.trim().split(' ');
-    const id = parseInt(parts[1]);
-    if(mouseOver) {
-        imgElement.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/' + id + '.gif';
-        imgElement.classList.remove('w-24');
-        imgElement.classList.add('w-20');
-        imgElement.classList.add('mb-3');
-
-    } else {
-        imgElement.src = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/' + id + '.png';
-        imgElement.classList.add('w-24');
-        imgElement.classList.remove('w-20');
-        imgElement.classList.remove('mb-3');
-    }
-   
-}

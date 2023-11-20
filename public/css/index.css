@@ -17,7 +17,19 @@ body {
   }
 
   .pokemon-icon-idle {
-    margin-top: -4.8rem;
+    margin-top: -4.5rem;
+  }
+
+  .card-cont {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .card-cont:hover .pokemon-img-cont{
+    transform: scale(1.2); 
+  }
+
+  .card-cont:hover {
+    cursor: pointer;
   }
 
   .normal {
