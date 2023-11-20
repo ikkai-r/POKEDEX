@@ -35,8 +35,22 @@ body {
     transform: scale(1.2); 
   }
 
+  .pok-evo-data:hover .pok-evo-img {
+    transform: scale(1.1); 
+  }
+
+  .pok-evo-data:hover {
+    cursor: pointer;
+  }
+
   .card-cont:hover {
     cursor: pointer;
+  }
+
+  #weak-against, #strong-against {
+    flex-wrap: wrap;
+    gap: 4px;
+    max-width: 300px;
   }
 
   .normal {
