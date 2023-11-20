@@ -14,6 +14,7 @@
   },
   "scripts": {
     "start": "nodemon app.js -e js,hbs,json,mjs,cjs,css",
+    "install": "npm install node express express-handlebars nodemon tailwind flowbite handlebars pokedex-promise-v2",
     "build-tail": "NODE_ENV=production tailwindcss build -i styles/tailwindcss.css -o public/css/style.css --watch"
   },
   "devDependencies": {
